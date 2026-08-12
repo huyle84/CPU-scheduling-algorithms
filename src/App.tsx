@@ -1,6 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Settings, Play, Plus, Trash2 } from 'lucide-react';
-import { Process, calculateFCFS, calculateSJF, calculateRR, calculatePriority, calculatePriorityRR, SchedulingResult } from './schedulingAlgorithms';
+import type { Process, SchedulingResult } from './schedulingAlgorithms';
+import { calculateFCFS, calculateSJF, calculateRR, calculatePriority, calculatePriorityRR } from './schedulingAlgorithms';
 import './index.css';
 
 const PRESET_PROCESSES: Process[] = [
