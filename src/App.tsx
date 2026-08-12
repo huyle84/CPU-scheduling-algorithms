@@ -283,7 +283,7 @@ function ComparisonPanel({ processes, quantum }: ComparisonPanelProps) {
                         {p.id}
                       </span>
                     </td>
-                    {results.map((r, i) => {
+                    {results.map((r) => {
                       const wt = r.result.waitingTimes[p.id] ?? 0;
                       return (
                         <td key={r.key} className={wt === minTime ? 'best-cell' : ''}>
