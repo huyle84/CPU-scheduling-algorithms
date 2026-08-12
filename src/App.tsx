@@ -1,7 +1,28 @@
 import { useState, useMemo } from 'react';
-import { Settings, Play, Plus, Trash2 } from 'lucide-react';
 import type { Process, SchedulingResult } from './schedulingAlgorithms';
 import { calculateFCFS, calculateSJF, calculateRR, calculatePriority, calculatePriorityRR } from './schedulingAlgorithms';
+
+// Inline SVG icons — no external dependency needed
+const IconSettings = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+  </svg>
+);
+const IconPlay = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="5 3 19 12 5 21 5 3"/>
+  </svg>
+);
+const IconPlus = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+  </svg>
+);
+const IconTrash = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/>
+  </svg>
+);
 import './index.css';
 
 const PRESET_PROCESSES: Process[] = [
@@ -85,7 +106,7 @@ function App() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
             <h2>Processes</h2>
             <button className="btn btn-secondary" onClick={handleAddProcess}>
-              <Plus size={18} /> Add
+              <IconPlus /> Add
             </button>
           </div>
           
@@ -134,7 +155,7 @@ function App() {
                   )}
                   <td>
                     <button className="btn btn-danger" onClick={() => handleRemoveProcess(p.id)}>
-                      <Trash2 size={16} />
+                      <IconTrash />
                     </button>
                   </td>
                 </tr>
@@ -145,7 +166,7 @@ function App() {
 
         <div className="glass-panel">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1.5rem' }}>
-            <Settings size={24} color="var(--accent-primary)" />
+            <IconSettings />
             <h2>Configuration</h2>
           </div>
           
@@ -174,7 +195,7 @@ function App() {
 
           <div style={{ marginTop: '2rem' }}>
             <button className="btn" style={{ width: '100%' }} onClick={handleSimulate}>
-              <Play size={18} /> Simulate
+              <IconPlay /> Simulate
             </button>
           </div>
         </div>
